@@ -159,7 +159,7 @@ namespace :deploy do
     if defined? Rails
       original_changelog = File.expand_path(Rails.root.join "CHANGELOG.md")
     else
-      original_changelog = File.join(File.dirname(File.expand_path(__FILE__)), "../../CHANGELOG.md")
+      original_changelog = File.join(File.dirname(File.expand_path(__FILE__)), "../../../../CHANGELOG.md")
     end
 
     new_changelog = "#{original_changelog}.new"

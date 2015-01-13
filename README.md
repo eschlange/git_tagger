@@ -20,7 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add the following code to the project's Rakefile:
+
+    git_tagger = Gem::Specification.find_by_name "git_tagger"
+    load "#{git_tagger.gem_dir}/lib/tasks/deploy.rake"
 
 ## Contributing
 
