@@ -90,6 +90,8 @@ namespace :deploy do
     puts " The current tag is: [#{ current_tag }]"
     puts " Updating tag to be: [#{current_major}.#{current_minor}."\
     "#{current_patch}]"
+    puts ""
+
     if confirm " #{ YELLOW }Is this correct? (#{WHITE}y#{YELLOW}/#{WHITE}n"\
     "#{YELLOW}) "
       new_tag = "#{current_major}.#{current_minor}.#{current_patch}"
@@ -152,7 +154,6 @@ namespace :deploy do
     end
 
     puts confirmation
-    puts ""
     puts DIVIDER
     "y" == confirmation
   end
