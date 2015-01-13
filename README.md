@@ -1,6 +1,6 @@
-# GitTagger
+# git_tagger
 
-TODO: Write a gem description
+A Ruby Gem designed to expedite: the git tagging procedure and updating a changelog
 
 ## Installation
 
