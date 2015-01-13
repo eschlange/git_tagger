@@ -158,7 +158,7 @@ namespace :deploy do
   end
 
   def modify_changelog(message)
-    if Rails
+    if defined? Rails
       original_changelog = File.expand_path(Rails.root.join "CHANGELOG.md")
     else
       original_changelog = File.join(File.dirname(File.expand_path(__FILE__)), "../../CHANGELOG.md")
