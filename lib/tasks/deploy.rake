@@ -124,9 +124,8 @@ namespace :deploy do
 
       if confirm "#{ YELLOW } Are you sure that you would like to commit " \
       "this change to origin/master before creating the new tag? (#{WHITE}y" \
-      "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR}"
+      "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
         modify_changelog(complete_changelog_update)
-        puts ""
         `git add -A`
         `git commit -m "Updating changelog for latest tag."`
       else
@@ -137,8 +136,6 @@ namespace :deploy do
 
   desc "Create and push new tag"
   task :create_and_push_tag do
-    puts DIVIDER
-    puts ""
     puts "Creating and pushing new tag..."
     `git tag #{ new_tag }`
     `git push origin #{ new_tag }`
