@@ -13,7 +13,6 @@ namespace :deploy do
   DIVIDER_BLUE = "\n#{ BLUE } =================================" \
             "===============================\e[0m\n"
 
-  application_name = Rails.application.class.parent_name.underscore
   current_tag = ""
   new_tag = ""
   current_tag_date = ""
@@ -23,14 +22,20 @@ namespace :deploy do
 
   desc "Create a new tag"
   task :tag do
+
     puts DIVIDER
-    puts "#{ PURPLE } *** #{ WHITE }Welcome to the tagging procedure for"\
-    " #{ application_name}!#{ DEFAULT_COLOR } #{ PURPLE } ***#{ DEFAULT_COLOR }"
+    puts "#{ PURPLE } *** #{ WHITE }Welcome to git_tagger"\
+    "!#{ DEFAULT_COLOR } #{ PURPLE } ***#{ DEFAULT_COLOR }"
     puts DIVIDER
 
-    current_tag = `git tag | gsort -V`.split("\n").last
-    current_tag_date = `git log --tags --simplify-by-decoration --pretty="\
-    "format:%ai" -n 1`
+    tag_list = `git tag | gsort -V`
+    if tag_list
+      current_tag = tag_list.split("\n").last
+      current_tag_date = `git log --tags --simplify-by-decoration --pretty="format:%ai" -n 1`
+    else
+      current_tag = "0.0.0"
+      current_tag_date = "2015-01-01 00:00:00 -0600"
+    end
 
     current_major = current_tag.split(".")[0].to_i
     current_minor = current_tag.split(".")[1].to_i
@@ -100,8 +105,7 @@ namespace :deploy do
       puts ""
       puts " The following commits were made since the last tag was created"
       puts DIVIDER_BLUE
-      print `git log --since="#{ current_tag_date }" --pretty=format:'%Cblue" \
-      " %ci %Creset-%Cred %an%Creset - %s'`
+      print `git log --since="#{ current_tag_date }" --pretty=format:'%Cblue %ci %Creset-%Cred %an%Creset - %s'`
       puts DIVIDER_BLUE
       puts " #{ YELLOW }Enter a brief changelog message to describe the " \
       "updates since the last tag was created, then press [#{WHITE}ENTER" \
@@ -154,7 +158,12 @@ namespace :deploy do
   end
 
   def modify_changelog(message)
-    original_changelog = File.expand_path(Rails.root.join "CHANGELOG.md")
+    if Rails
+      original_changelog = File.expand_path(Rails.root.join "CHANGELOG.md")
+    else
+      original_changelog = File.join(File.dirname(File.expand_path(__FILE__)), "../../CHANGELOG.md")
+    end
+
     new_changelog = "#{original_changelog}.new"
     File.open(new_changelog, "w") do |fo|
       fo.puts message
