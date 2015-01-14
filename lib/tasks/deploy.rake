@@ -178,7 +178,7 @@ namespace :deploy do
       puts "checking for changelog file relative to dummy app ..."
       changelog = File.join(File.dirname(File.expand_path(__FILE__)),
                             "../../../../CHANGELOG.md")
-      if File.exist?(changelog)
+      if File.file?(changelog)
         return changelog
       end
 
@@ -186,7 +186,7 @@ namespace :deploy do
       changelog = File.join(File.dirname(File.expand_path(__FILE__)),
                             "../../CHANGELOG.md")
 
-      if File.exist?(changelog)
+      if File.file?(changelog)
         return changelog
       end
     end
