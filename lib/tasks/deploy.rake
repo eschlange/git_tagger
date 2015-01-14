@@ -28,6 +28,15 @@ namespace :deploy do
     "!#{ DEFAULT_COLOR } #{ PURPLE } ***#{ DEFAULT_COLOR }"
     puts DIVIDER
 
+    #Your branch is up-to-date with 'origin/master'.
+    #nothing to commit, working directory clean
+
+    commit_count_check = `git status`
+    if !(commit_count_check.include? "Your branch is up-to-date with 'origin/master'.") &&
+       !(commit_count_check.include? "nothing to commit, working directory clean")
+      abort("ABORTING... please commit and push any local changes before attempting to create a new tag")
+    end
+
     tag_list = `git tag | gsort -V`
     if tag_list
       current_tag = tag_list.split("\n").last
@@ -170,6 +179,10 @@ namespace :deploy do
 
     `git add "#{original_changelog}"`
     `git commit -m "Updating changelog for latest tag."`
+    if confirm "push the changelog update to the repository? (#{WHITE}y" \
+      "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
+      `git push`
+    end
   end
 
   def locate_changelog
