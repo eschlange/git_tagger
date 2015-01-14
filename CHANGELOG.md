@@ -1,3 +1,6 @@
+## 0.0.7 - 2015-01-13
+ * additional updating of changelog search logic
+
 ## 0.0.6 - 2015-01-13
  * updated readme
 
