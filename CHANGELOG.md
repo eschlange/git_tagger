@@ -1,3 +1,6 @@
+## 0.1.1 - 2015-01-14
+ * changelog update is now pushed mid-process, process now checks that all local changes are committed and pushed before continuing the tagging process
+
 ## 0.1.0 - 2015-01-14
  * now allows rails gems to update changelog without error
 
