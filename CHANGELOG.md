@@ -1,3 +1,6 @@
+## 0.1.0 - 2015-01-14
+ * now allows rails gems to update changelog without error
+
 ## 0.0.7 - 2015-01-13
  * additional updating of changelog search logic
 
