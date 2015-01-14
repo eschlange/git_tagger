@@ -156,11 +156,7 @@ namespace :deploy do
   end
 
   def modify_changelog(message)
-    if defined? Rails
-      original_changelog = File.expand_path(Rails.root.join "CHANGELOG.md")
-    else
-      original_changelog = File.join(File.dirname(File.expand_path(__FILE__)), "../../../../CHANGELOG.md")
-    end
+    original_changelog = locate_changelog
 
     new_changelog = "#{original_changelog}.new"
     File.open(new_changelog, "w") do |fo|
@@ -171,4 +167,28 @@ namespace :deploy do
     end
     File.rename(new_changelog, original_changelog)
   end
+
+  def locate_changelog
+    if defined? Rails
+      puts "checking for changelog file relative to Rails app ..."
+      changelog = File.expand_path(Rails.root.join "CHANGELOG.md")
+      return changelog
+    else
+      begin
+        puts "checking for changelog file relative to dummy app ..."
+        changelog = File.join(File.dirname(File.expand_path(__FILE__)),
+                              "../../../../CHANGELOG.md")
+        return changelog
+      end
+      begin
+        puts "checking for changelog file relative to gem ..."
+        File.join(File.dirname(File.expand_path(__FILE__)),
+                  "../../CHANGELOG.md")
+        return changelog
+      end
+    end
+    puts "no changelog file could be found to update"
+    abort("aborting tagging process")
+  end
+
 end
