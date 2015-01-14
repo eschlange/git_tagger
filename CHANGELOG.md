@@ -1,3 +1,6 @@
+## 0.0.6 - 2015-01-13
+ * updated readme
+
 ## 0.0.5 - 2015-01-13
  * updated changelog logic
 
