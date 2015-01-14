@@ -103,7 +103,7 @@ namespace :deploy do
   desc "Create a changelog entry and commit to master"
   task :create_change_log do
     if confirm " Would you like to create and commit a changelog message " \
-    "related to your new tag? (y/n)"
+    "related to your new tag? (y/n) "
       puts ""
       puts " The following commits were made since the last tag was created"
       puts DIVIDER_BLUE
@@ -126,8 +126,6 @@ namespace :deploy do
       "this change to origin/master before creating the new tag? (#{WHITE}y" \
       "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
         modify_changelog(complete_changelog_update)
-        `git add -A`
-        `git commit -m "Updating changelog for latest tag."`
       else
         abort("Aborting tagging process.")
       end
@@ -159,6 +157,9 @@ namespace :deploy do
     original_changelog = locate_changelog
 
     new_changelog = "#{original_changelog}.new"
+
+    puts "filepath = #{original_changelog}"
+
     File.open(new_changelog, "w") do |fo|
       fo.puts message
       File.foreach(original_changelog) do |li|
@@ -166,13 +167,27 @@ namespace :deploy do
       end
     end
     File.rename(new_changelog, original_changelog)
+
+    `git add "#{original_changelog}"`
+    `git commit -m "Updating changelog for latest tag."`
   end
 
   def locate_changelog
     if defined? Rails
       puts "checking for changelog file relative to Rails app ..."
+
       changelog = File.expand_path(Rails.root.join "CHANGELOG.md")
-      return changelog
+      if File.file?(changelog)
+        puts "found Rails application changelog location ..."
+        return changelog
+      end
+
+      changelog = File.expand_path(Rails.root.join "../../CHANGELOG.md")
+      if File.file?(changelog)
+        puts "found Rails Gem changelog location ..."
+        return changelog
+      end
+
     else
 
       puts "checking for changelog file relative to dummy app ..."
@@ -185,7 +200,6 @@ namespace :deploy do
       puts "checking for changelog file relative to gem ..."
       changelog = File.join(File.dirname(File.expand_path(__FILE__)),
                             "../../CHANGELOG.md")
-
       if File.file?(changelog)
         return changelog
       end
