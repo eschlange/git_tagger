@@ -179,12 +179,16 @@ namespace :deploy do
         changelog = File.join(File.dirname(File.expand_path(__FILE__)),
                               "../../../../CHANGELOG.md")
         return changelog
+      rescue
+        puts "An error occurred: #{$!}"
       end
       begin
         puts "checking for changelog file relative to gem ..."
         File.join(File.dirname(File.expand_path(__FILE__)),
                   "../../CHANGELOG.md")
         return changelog
+      rescue
+        puts "An error occurred: #{$!}"
       end
     end
     puts "no changelog file could be found to update"
