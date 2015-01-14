@@ -10,6 +10,13 @@ Add this line to your application's Gemfile:
 gem 'git_tagger'
 ```
 
+Add the following code to the project's Rakefile:
+
+```ruby
+    git_tagger = Gem::Specification.find_by_name "git_tagger"
+    load "#{git_tagger.gem_dir}/lib/tasks/deploy.rake"
+```
+
 And then execute:
 
     $ bundle
@@ -20,10 +27,15 @@ Or install it yourself as:
 
 ## Usage
 
-Add the following code to the project's Rakefile:
+Within the root directory of your application
 
-    git_tagger = Gem::Specification.find_by_name "git_tagger"
-    load "#{git_tagger.gem_dir}/lib/tasks/deploy.rake"
+- For full Rails applications:
+
+    $ rake deploy:tag
+
+- For Ruby gems:
+
+    $ bundle exec
 
 ## Contributing
 

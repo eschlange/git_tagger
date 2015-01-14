@@ -28,9 +28,6 @@ namespace :deploy do
     "!#{ DEFAULT_COLOR } #{ PURPLE } ***#{ DEFAULT_COLOR }"
     puts DIVIDER
 
-    #Your branch is up-to-date with 'origin/master'.
-    #nothing to commit, working directory clean
-
     commit_count_check = `git status`
     if !(commit_count_check.include? "Your branch is up-to-date with 'origin/master'.") &&
        !(commit_count_check.include? "nothing to commit, working directory clean")
@@ -164,10 +161,7 @@ namespace :deploy do
 
   def modify_changelog(message)
     original_changelog = locate_changelog
-
     new_changelog = "#{original_changelog}.new"
-
-    puts "filepath = #{original_changelog}"
 
     File.open(new_changelog, "w") do |fo|
       fo.puts message
