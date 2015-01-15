@@ -29,7 +29,6 @@ namespace :deploy do
   current_major = 0
   current_minor = 0
   current_patch = 0
-  project_type = ""
 
   desc "Master tagging task, run this for the full tagging process."
   task :tag do
@@ -121,7 +120,7 @@ namespace :deploy do
     end
   end
 
-  desc "Create a changelog entry and commit to master"
+  desc "Create a changelog entry, update version file and commit to master"
   task :create_change_log do
     if confirm " Would you like to create and commit a changelog message " \
     "related to your new tag? (y/n) "
@@ -143,17 +142,17 @@ namespace :deploy do
       complete_changelog_update = "## #{ new_tag } - " \
       "#{ DateTime.now.strftime('%F') }\n * #{ changelog_message }\n\n"
 
-      if RAILS_APPLICATION != project_type
-        update_gem_version project_type
-      end
-
       if confirm "#{ YELLOW } Are you sure that you would like to commit " \
       "this change to origin/master before creating the new tag? (#{WHITE}y" \
       "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
-        modify_changelog(complete_changelog_update)
+        project_type = find_project_type_by_gemfile_location
+        # modify_changelog(complete_changelog_update, project_type)
+        update_version_file version_file_location(project_type), new_tag
       else
         abort("Aborting tagging process.")
       end
+
+
     end
   end
 
@@ -178,8 +177,8 @@ namespace :deploy do
     "y" == confirmation
   end
 
-  def modify_changelog(message)
-    original_changelog = locate_changelog
+  def modify_changelog(message, project_type)
+    original_changelog = locate_changelog project_type
     new_changelog = "#{original_changelog}.new"
 
     File.open(new_changelog, "w") do |fo|
@@ -198,66 +197,97 @@ namespace :deploy do
     end
   end
 
-  def locate_changelog
-    if defined? Rails
-      puts "checking for changelog file relative to Rails app ..."
-      changelog = File.expand_path(Rails.root.join "CHANGELOG.md")
-      if File.file?(changelog)
-        puts "found Rails application changelog location ..."
-        project_type = RAILS_APPLICATION
-        return changelog
-      end
-
-      changelog = File.expand_path(Rails.root.join "../../CHANGELOG.md")
-      if File.file?(changelog)
-        puts "found Rails Gem changelog location ..."
-        project_type = RAILS_GEM
-        return changelog
-      end
+  def locate_changelog (project_type)
+    case project_type
+    when RAILS_APPLICATION
+      File.expand_path(Rails.root.join "CHANGELOG.md")
+    when RAILS_GEM
+      File.expand_path(Rails.root.join "../../CHANGELOG.md")
+    when NON_RAILS_GEM
+      File.join(File.dirname(File.expand_path(__FILE__)),
+                "../../../../CHANGELOG.md")
+    when GIT_TRIGGER_GEM
+      File.join(File.dirname(File.expand_path(__FILE__)),
+                "../../CHANGELOG.md")
     else
-      changelog = File.join(File.dirname(File.expand_path(__FILE__)),
-                            "../../../../CHANGELOG.md")
-      if File.file?(changelog)
-        puts "found changelog file relative to non-rails dummy app ..."
-        project_type = NON_RAILS_GEM
-        return changelog
-      end
-
-      changelog = File.join(File.dirname(File.expand_path(__FILE__)),
-                            "../../CHANGELOG.md")
-      if File.file?(changelog)
-        puts "found changelog file relative to a gem without rails ..."
-        project_type = GIT_TRIGGER_GEM
-        return changelog
-      end
+      puts "no changelog file could be found to update"
+      abort("aborting tagging process")
     end
-    puts "no changelog file could be found to update"
-    abort("aborting tagging process")
   end
 
-  # Updates a Gems version to match the new tag
-  def update_gem_version (project_name, project_type, updated_version)
-
-    # Determine version file location
-    if GIT_TRIGGER_GEM == project_type
-      version_file = File.join(File.dirname(File.expand_path(__FILE__)),
-                            "../../lib/git_trigger/version.rb")
-    elsif RAILS_GEM == project_type
-      project_name = Rails.application.class.parent_name.underscore
-      version_file = File.expand_path(Rails.root.join "../../lib/" \
-                     "#{ project_name }/version.rb")
-    elsif NON_RAILS_GEM == project_type
-      #TODO Add logic to find gem name and apply to version_file path
-      project_name = "PLACE_HOLDER"
-      version_file = File.join(File.dirname(File.expand_path(__FILE__)),
-                            "../../../../lib/#{ project_name }/version.rb")
+  # locates the version file
+  def version_file_location (project_type)
+    project_name = find_project_name(project_type)
+    case project_type
+    when GIT_TRIGGER_GEM
+      File.join(File.dirname(File.expand_path(__FILE__)),
+                "../../lib/git_trigger/version.rb")
+    when RAILS_GEM
+      File.expand_path(Rails.root.join "../../lib/" \
+                       "#{ project_name }/version.rb")
+    when RAILS_APPLICATION
+      File.expand_path(Rails.root.join "/lib/" \
+                       "#{ project_name }/version.rb")
+    when NON_RAILS_GEM
+      File.join(File.dirname(File.expand_path(__FILE__)),
+                "../../../../lib/#{ project_name }/version.rb")
+    else
+      puts "FATAL: Unknown project type, unable to update gem version!"
+      abort("aborting tagging process")
     end
+  end
 
-    # Update version number
+  def find_project_name project_type
+    case project_type
+    when RAILS_APPLICATION
+      Rails.application.class.parent_name.underscore
+    when RAILS_GEM
+      Rails.application.class.parent_name.underscore
+    when NON_RAILS_GEM
+      #TODO Add logic to find gem name and apply to version_file path
+      "PLACE_HOLDER"
+    when GIT_TRIGGER_GEM
+      "git_trigger"
+    else
+      puts "FATAL: Unknown project type, unable to determine project name!"
+      abort("aborting tagging process")
+    end
+  end
+
+  # Update version file to match updated tag
+  def update_version_file (version_file, updated_version)
     version_text = File.read(version_file)
     updated_version_contents = version_text.gsub(/  VERSION = "*"/, "  VERSION = #{ updated_version }")
     File.open(file_name, "w") {|file| file.puts updated_version_contents }
     abort("test")
+  end
+
+  # Determine location of gemfile and return project type
+  def find_project_type_by_gemfile_location
+    # If tagging an application or Gem that uses Rails
+    if defined? Rails
+      if File.file?(File.expand_path(Rails.root.join "Gemfile"))
+        puts "-- determined that project type is a Rails application --"
+        return RAILS_APPLICATION
+      end
+      if File.expand_path(Rails.root.join "../../Gemfile")
+        puts "-- determined that project type is a Rails Gem --"
+        return RAILS_GEM
+      end
+    else
+      if File.file?(File.join(File.dirname(File.expand_path(__FILE__)),
+                              "../../../../Gemfile"))
+        puts "-- determined that project type is a Non Rails Gem --"
+        return NON_RAILS_GEM
+      end
+      if File.file?(File.join(File.dirname(File.expand_path(__FILE__)),
+                              "../../Gemfile"))
+        puts "-- determined that project type is the git_trigger Gem --"
+        return GIT_TRIGGER_GEM
+      end
+    end
+    puts "FATAL: unable to determine project type based on Gemfile location!"
+    abort("aborting tagging process")
   end
 
 end
