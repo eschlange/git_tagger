@@ -1,0 +1,53 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - config/**/*
+    - db/**/*
+    - spec/dummy/**/*
+    - Rakefile
+    - git_tagger.gemspec
+  RunRailsCops: true
+
+AbcSize:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+Documentation:
+  Exclude:
+    - spec/**/*
+
+DotPosition:
+  Enabled: false
+
+TrailingBlankLines:
+  Enabled: false
+
+HandleExceptions:
+  Enabled: false
+
+IfUnlessModifier:
+  Enabled: false
+
+LineLength:
+  Exclude:
+    - spec/**/*
+
+MethodLength:
+  Max: 25
+
+PredicateName:
+  Enabled: false
+
+RegexpLiteral:
+  Enabled: false
+
+StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/GuardClause:
+  Enabled: false
+
+WordArray:
+  Enabled: false

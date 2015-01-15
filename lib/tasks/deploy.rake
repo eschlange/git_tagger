@@ -32,7 +32,6 @@ namespace :deploy do
 
   desc "Master tagging task, run this for the full tagging process."
   task :tag do
-
     puts DIVIDER_PURPLE
     print "#{ PURPLE } *** #{ WHITE }Welcome to git_tagger"\
     "!#{ DEFAULT_COLOR } #{ PURPLE } ***#{ DEFAULT_COLOR }"
@@ -41,16 +40,22 @@ namespace :deploy do
     # Abort tagging process if there are uncommitted changes or commits that
     #   have not been pushed to the master branch in the repository.
     commit_count_check = `git status`
-    if !(commit_count_check.include? "Your branch is up-to-date with 'origin/master'.") &&
-       !(commit_count_check.include? "nothing to commit, working directory clean")
-      abort("ABORTING... please commit and push any local changes before attempting to create a new tag")
+    if !(commit_count_check.include?
+         "Your branch is up-to-date with 'origin/master'.") &&
+       !(commit_count_check.include?
+         "nothing to commit, working directory clean")
+      abort("ABORTING... please commit and push any local changes before atte"\
+      "mpting to create a new tag")
     end
 
     # Get the latest tag or create a new tag if no tag exists.
     tag_list = `git tag | gsort -V`
     if tag_list
       current_tag = tag_list.split("\n").last
+      # disabling cop, unable to break up system commands
+      # rubocop:disable Metrics/LineLength, Style/StringLiterals
       current_tag_date = `git log --tags --simplify-by-decoration --pretty="format:%ai" -n 1`
+      # rubocop:enable Metrics/LineLength, Style/StringLiterals
     else
       current_tag = "0.0.0"
       current_tag_date = "2015-01-01 00:00:00 -0600"
@@ -127,7 +132,10 @@ namespace :deploy do
       puts LINE_BUFFER
       puts " The following commits were made since the last tag was created"
       puts DIVIDER_BLUE
+      # disabling cop, unable to break up system commands
+      # rubocop:disable Metrics/LineLength, Style/StringLiterals
       print `git log --since="#{ current_tag_date }" --pretty=format:'%Cblue %ci %Creset-%Cred %an%Creset - %s'`
+      # rubocop:enable Metrics/LineLength, Style/StringLiterals
       puts DIVIDER_BLUE
       puts " #{ YELLOW }Enter a brief changelog message to describe the " \
       "updates since the last tag was created, then press [#{WHITE}ENTER" \
@@ -146,13 +154,11 @@ namespace :deploy do
       "this change to origin/master before creating the new tag? (#{WHITE}y" \
       "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
         project_type = find_project_type_by_gemfile_location
-        # modify_changelog(complete_changelog_update, project_type)
+        modify_changelog(complete_changelog_update, project_type)
         update_version_file version_file_location(project_type), new_tag
       else
         abort("Aborting tagging process.")
       end
-
-
     end
   end
 
@@ -197,7 +203,7 @@ namespace :deploy do
     end
   end
 
-  def locate_changelog (project_type)
+  def locate_changelog(project_type)
     case project_type
     when RAILS_APPLICATION
       File.expand_path(Rails.root.join "CHANGELOG.md")
@@ -215,13 +221,12 @@ namespace :deploy do
     end
   end
 
-  # locates the version file
-  def version_file_location (project_type)
+  # Locates the version file and returns its path
+  def version_file_location(project_type)
     project_name = find_project_name(project_type)
     case project_type
     when GIT_TRIGGER_GEM
-      File.join(File.dirname(File.expand_path(__FILE__)),
-                "../../lib/git_trigger/version.rb")
+      File.expand_path("../../git_tagger/version.rb", __FILE__)
     when RAILS_GEM
       File.expand_path(Rails.root.join "../../lib/" \
                        "#{ project_name }/version.rb")
@@ -237,14 +242,14 @@ namespace :deploy do
     end
   end
 
-  def find_project_name project_type
+  def find_project_name(project_type)
     case project_type
     when RAILS_APPLICATION
       Rails.application.class.parent_name.underscore
     when RAILS_GEM
       Rails.application.class.parent_name.underscore
     when NON_RAILS_GEM
-      #TODO Add logic to find gem name and apply to version_file path
+      # TODO: Add logic to find gem name and apply to version_file path
       "PLACE_HOLDER"
     when GIT_TRIGGER_GEM
       "git_trigger"
@@ -255,11 +260,12 @@ namespace :deploy do
   end
 
   # Update version file to match updated tag
-  def update_version_file (version_file, updated_version)
+  def update_version_file(version_file, updated_version)
     version_text = File.read(version_file)
-    updated_version_contents = version_text.gsub(/  VERSION = "*"/, "  VERSION = #{ updated_version }")
-    File.open(file_name, "w") {|file| file.puts updated_version_contents }
-    abort("test")
+    updated_version_contents = version_text
+                               .gsub(/  VERSION = "[0-9]+\.[0-9]+\.[0-9]+"/,
+                                     "  VERSION = \"#{ updated_version }\"")
+    File.open(version_file, "w") { |file| file.puts updated_version_contents }
   end
 
   # Determine location of gemfile and return project type
@@ -289,5 +295,4 @@ namespace :deploy do
     puts "FATAL: unable to determine project type based on Gemfile location!"
     abort("aborting tagging process")
   end
-
 end
