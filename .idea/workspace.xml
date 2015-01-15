@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3b93132-51de-451d-94f4-9028672498d1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.rubocop.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/deploy.rake" afterPath="$PROJECT_DIR$/lib/tasks/deploy.rake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/git_tagger.rb" afterPath="$PROJECT_DIR$/lib/git_tagger.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="git_tagger.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,8 +42,8 @@
       <file leaf-file-name="deploy.rake" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/tasks/deploy.rake">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76404494" vertical-offset="2742" max-vertical-offset="6688">
-              <caret line="137" column="22" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.20786516" vertical-offset="4084" max-vertical-offset="6688">
+              <caret line="189" column="41" selection-start-line="189" selection-start-column="41" selection-end-line="189" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -532,8 +528,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/deploy.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76404494" vertical-offset="2742" max-vertical-offset="6688">
-          <caret line="137" column="22" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.20786516" vertical-offset="4084" max-vertical-offset="6688">
+          <caret line="189" column="41" selection-start-line="189" selection-start-column="41" selection-end-line="189" selection-end-column="41" />
           <folding />
         </state>
       </provider>

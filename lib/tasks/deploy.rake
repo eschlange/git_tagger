@@ -276,7 +276,7 @@ namespace :deploy do
         puts "-- determined that project type is a Rails application --"
         return RAILS_APPLICATION
       end
-      if File.expand_path(Rails.root.join "../../Gemfile")
+      if File.file?(File.expand_path(Rails.root.join "../../Gemfile"))
         puts "-- determined that project type is a Rails Gem --"
         return RAILS_GEM
       end
