@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3b93132-51de-451d-94f4-9028672498d1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.rubocop.yml" afterPath="$PROJECT_DIR$/.rubocop.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/changelog.rb" afterPath="$PROJECT_DIR$/app/models/changelog.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/deploy.rake" afterPath="$PROJECT_DIR$/lib/tasks/deploy.rake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/git_tag.rb" afterPath="$PROJECT_DIR$/app/models/git_tag.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/version.rb" afterPath="$PROJECT_DIR$/app/models/version.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -44,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deploy.rake" pinned="false" current-in-tab="false">
+      <file leaf-file-name="deploy.rake" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/tasks/deploy.rake">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.121212" vertical-offset="942" max-vertical-offset="4510">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.41893643" vertical-offset="2317" max-vertical-offset="4334">
+              <caret line="120" column="32" selection-start-line="120" selection-start-column="32" selection-end-line="120" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -57,8 +55,8 @@
       <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.166667" vertical-offset="0" max-vertical-offset="660">
-              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+            <state vertical-scroll-proportion="-6.7222223" vertical-offset="0" max-vertical-offset="660">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -70,18 +68,18 @@
       <file leaf-file-name="git_tag.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/git_tag.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.333334" vertical-offset="22" max-vertical-offset="1254">
+            <state vertical-scroll-proportion="-2.3636363" vertical-offset="516" max-vertical-offset="1254">
               <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="changelog.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="changelog.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/changelog.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.059620596" vertical-offset="0" max-vertical-offset="1100">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+            <state vertical-scroll-proportion="-20.0" vertical-offset="44" max-vertical-offset="1232">
+              <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -90,8 +88,8 @@
       <file leaf-file-name="version.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/version.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.333333" vertical-offset="308" max-vertical-offset="1430">
-              <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+            <state vertical-scroll-proportion="-10.787879" vertical-offset="128" max-vertical-offset="1430">
+              <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -141,11 +139,11 @@
         <option value="$PROJECT_DIR$/lib/git_tagger.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/models/tag.rb" />
-        <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/.rubocop.yml" />
-        <option value="$PROJECT_DIR$/lib/tasks/deploy.rake" />
-        <option value="$PROJECT_DIR$/app/models/version.rb" />
         <option value="$PROJECT_DIR$/app/models/git_tag.rb" />
+        <option value="$PROJECT_DIR$/CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/app/models/version.rb" />
+        <option value="$PROJECT_DIR$/lib/tasks/deploy.rake" />
         <option value="$PROJECT_DIR$/app/models/changelog.rb" />
       </list>
     </option>
@@ -448,7 +446,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/lib/tasks/deploy.rake</url>
-          <line>53</line>
+          <line>47</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
@@ -549,17 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.166667" vertical-offset="0" max-vertical-offset="660">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.rubocop.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="308" max-vertical-offset="1298">
@@ -568,34 +555,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/deploy.rake">
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.121212" vertical-offset="942" max-vertical-offset="4510">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state vertical-scroll-proportion="-6.7222223" vertical-offset="0" max-vertical-offset="660">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/git_tag.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3636363" vertical-offset="516" max-vertical-offset="1254">
+          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/version.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.333333" vertical-offset="308" max-vertical-offset="1430">
-          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/git_tag.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.333334" vertical-offset="22" max-vertical-offset="1254">
-          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+        <state vertical-scroll-proportion="-10.787879" vertical-offset="128" max-vertical-offset="1430">
+          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/changelog.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.059620596" vertical-offset="0" max-vertical-offset="1100">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        <state vertical-scroll-proportion="-20.0" vertical-offset="44" max-vertical-offset="1232">
+          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tasks/deploy.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41893643" vertical-offset="2317" max-vertical-offset="4334">
+          <caret line="120" column="32" selection-start-line="120" selection-start-column="32" selection-end-line="120" selection-end-column="32" />
           <folding />
         </state>
       </provider>

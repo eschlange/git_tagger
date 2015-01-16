@@ -21,7 +21,7 @@ module GitTagger
         (engine_text.match(/^module \w*$/))[0].split(" ")[1].underscore
       when :non_rails_gem
         # TODO: Add logic to find gem name and apply to version_file path
-        "git_trigger"
+        "git_tagger"
       else
         puts "FATAL: Unknown project type, unable to determine project name!"
         abort("aborting tagging process")

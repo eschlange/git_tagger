@@ -5,12 +5,6 @@ require_relative "../../app/models/git_tag"
 require_relative "../../app/models/version"
 
 namespace :deploy do
-  # Project types
-  RAILS_APPLICATION = "rails_application"
-  RAILS_GEM = "rails_gem"
-  NON_RAILS_GEM = "non_rails_gem"
-  GIT_TRIGGER_GEM = "git_trigger_gem"
-
   # Constants
   PURPLE = "\e[0;35m"
   WHITE = "\e[1;37m"
@@ -132,9 +126,7 @@ namespace :deploy do
         changelog.update(project_type)
         if confirm "push the changelog update to the repository? (#{WHITE}y" \
         "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
-          `git add "#{original_changelog}"`
-          `git commit -m "Updating changelog for latest tag."`
-          `git push`
+          changelog.push
         else
           puts "skipping changelog update"
         end

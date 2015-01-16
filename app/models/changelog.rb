@@ -1,7 +1,6 @@
 module GitTagger
   # Represents a changelog for a project.
   class Changelog
-    attr_reader :changelog_path
     attr_reader :update_text
 
     # Sets the updated changelog text based on a semantic version and message
@@ -12,16 +11,23 @@ module GitTagger
 
     # Updated the changelog file with the new update text
     def update(project_type)
-      original_changelog = locate_changelog project_type
-      new_changelog = "#{ original_changelog }.new"
+      @changelog_path = locate_changelog project_type
+      new_changelog = "#{ @changelog_path }.new"
 
       File.open(new_changelog, "w") do |fo|
         fo.puts @update_text
-        File.foreach(original_changelog) do |li|
+        File.foreach(@changelog_path) do |li|
           fo.puts li
         end
       end
-      File.rename(new_changelog, original_changelog)
+      File.rename(new_changelog, @changelog_path)
+    end
+
+    # Utilizes system commands to commit and push the changelog to github
+    def push
+      `git add "#{ @changelog_path }"`
+      `git commit -m "Updating changelog for latest tag."`
+      `git push`
     end
 
     private
