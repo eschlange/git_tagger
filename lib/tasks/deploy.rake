@@ -181,8 +181,9 @@ namespace :deploy do
   # rubocop:disable Metrics/LineLength, Style/StringLiterals
   def clean_working_directory_check
     commit_count_check = `git status`
-    if !(commit_count_check.include? "Your branch is up-to-date with 'origin/master'.") &&
-       !(commit_count_check.include? "nothing to commit, working directory clean")
+    if (!(commit_count_check.include? "Your branch is up-to-date with 'origin/master'.") &&
+        !(commit_count_check.include? "nothing to commit, working directory clean")) ||
+       (commit_count_check.include? "Changes not staged for commit:")
       abort("ABORTING... please commit and push any local changes before atte"\
       "mpting to create a new tag")
     end
