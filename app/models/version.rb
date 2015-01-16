@@ -40,7 +40,7 @@ module GitTagger
       `git add "#{ @version_file_path }"`
 
       if :rails_gem == @project_type
-        `bundle install`
+        `(cd #{ File.expand_path(Rails.root) }; bundle install)`
         `git add "#{ File.expand_path(Rails.root.join("Gemfile.lock")) }"`
       end
 
