@@ -41,7 +41,7 @@ module GitTagger
 
       if :rails_gem == @project_type
         `(cd #{ File.expand_path(Rails.root) }; bundle install)`
-        `git add "#{ File.expand_path(Rails.root.join("Gemfile.lock")) }"`
+        `git add "#{ File.expand_path(Rails.root.join("../../Gemfile.lock")) }"`
       end
 
       `git commit -m "Updating version for latest tag."`
