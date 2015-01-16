@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3b93132-51de-451d-94f4-9028672498d1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/deploy.rake" afterPath="$PROJECT_DIR$/lib/tasks/deploy.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="git_tagger.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.9722223" vertical-offset="299" max-vertical-offset="1144">
-              <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.61088437" vertical-offset="299" max-vertical-offset="1144">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -39,10 +40,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deploy.rake" pinned="false" current-in-tab="true">
+      <file leaf-file-name="deploy.rake" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/tasks/deploy.rake">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27371272" vertical-offset="854" max-vertical-offset="4708">
+            <state vertical-scroll-proportion="-6.121212" vertical-offset="854" max-vertical-offset="4708">
               <caret line="48" column="62" selection-start-line="48" selection-start-column="62" selection-end-line="48" selection-end-column="62" />
               <folding />
             </state>
@@ -52,8 +53,8 @@
       <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.2777777" vertical-offset="88" max-vertical-offset="792">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.2777777" vertical-offset="176" max-vertical-offset="858">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -140,8 +141,8 @@
         <option value="$PROJECT_DIR$/app/models/git_tag.rb" />
         <option value="$PROJECT_DIR$/app/models/changelog.rb" />
         <option value="$PROJECT_DIR$/app/models/version.rb" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/lib/tasks/deploy.rake" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -559,19 +560,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2777777" vertical-offset="88" max-vertical-offset="792">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.9722223" vertical-offset="299" max-vertical-offset="1144">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+        <state vertical-scroll-proportion="-4.2777777" vertical-offset="176" max-vertical-offset="858">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -589,10 +579,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/deploy.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27371272" vertical-offset="854" max-vertical-offset="4708">
+        <state vertical-scroll-proportion="-6.121212" vertical-offset="854" max-vertical-offset="4708">
           <caret line="48" column="62" selection-start-line="48" selection-start-column="62" selection-end-line="48" selection-end-column="62" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61088437" vertical-offset="299" max-vertical-offset="1144">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
       </provider>
     </entry>
   </component>
