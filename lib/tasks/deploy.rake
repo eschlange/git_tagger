@@ -1,3 +1,4 @@
+require "find"
 require "io/console"
 
 namespace :deploy do
@@ -39,6 +40,8 @@ namespace :deploy do
 
     # Abort tagging process if there are uncommitted changes or commits that
     #   have not been pushed to the master branch in the repository.
+    <<-DOC
+    # Ommitting for testing purposes
     commit_count_check = `git status`
     if !(commit_count_check.include?
          "Your branch is up-to-date with 'origin/master'.") &&
@@ -47,6 +50,7 @@ namespace :deploy do
       abort("ABORTING... please commit and push any local changes before atte"\
       "mpting to create a new tag")
     end
+    DOC
 
     # Get the latest tag or create a new tag if no tag exists.
     tag_list = `git tag | gsort -V`
@@ -165,8 +169,8 @@ namespace :deploy do
   desc "Create and push new tag"
   task :create_and_push_tag do
     puts "Creating and pushing new tag..."
-    `git tag #{ new_tag }`
-    `git push origin #{ new_tag }`
+    # `git tag #{ new_tag }`
+    # `git push origin #{ new_tag }`
     puts "#{ WHITE }Tag creation complete! #{ DEFAULT_COLOR }"
   end
 
@@ -183,6 +187,7 @@ namespace :deploy do
     "y" == confirmation
   end
 
+  # Updates the changelog file
   def modify_changelog(message, project_type)
     original_changelog = locate_changelog project_type
     new_changelog = "#{original_changelog}.new"
@@ -195,11 +200,11 @@ namespace :deploy do
     end
     File.rename(new_changelog, original_changelog)
 
-    `git add "#{original_changelog}"`
-    `git commit -m "Updating changelog for latest tag."`
+    # `git add "#{original_changelog}"`
+    # `git commit -m "Updating changelog for latest tag."`
     if confirm "push the changelog update to the repository? (#{WHITE}y" \
       "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
-      `git push`
+      # `git push`
     end
   end
 
@@ -247,7 +252,12 @@ namespace :deploy do
     when RAILS_APPLICATION
       Rails.application.class.parent_name.underscore
     when RAILS_GEM
-      Rails.application.class.parent_name.underscore
+      engine_path = ""
+      Find.find(File.expand_path(Rails.root.join("../../lib"))) do |path|
+        engine_path = path if path =~ /.*\/engine\.rb$/
+      end
+      engine_text = File.read(engine_path)
+      (engine_text.match(/^module \w*$/))[0].split(" ")[1].underscore
     when NON_RAILS_GEM
       # TODO: Add logic to find gem name and apply to version_file path
       "PLACE_HOLDER"
