@@ -5,6 +5,7 @@ module GitTagger
     def initialize(project_type)
       @project_name = find_project_name project_type
       @version_file_path = version_file_location project_type, @project_name
+      @project_type = project_type
     end
 
     # locates and returns a project's name based on the project type
@@ -37,7 +38,13 @@ module GitTagger
       File.open(@version_file_path, "w") { |file| file.puts version_contents }
 
       `git add "#{ @version_file_path }"`
-      `git commit -m "Updating changelog for latest tag."`
+
+      if :rails_gem == @project_type
+        `bundle install`
+        `git add "#{ File.expand_path(Rails.root.join("Gemfile.lock")) }"`
+      end
+
+      `git commit -m "Updating version for latest tag."`
     end
 
     # Locates the version file and returns its path
