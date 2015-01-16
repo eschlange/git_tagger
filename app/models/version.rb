@@ -1,11 +1,13 @@
 module GitTagger
+  # Represents a version file within a project.
   class Version
-
+    # Sets the project name and filepath based on a project type
     def initialize(project_type)
       @project_name = find_project_name project_type
       @version_file_path = version_file_location project_type, @project_name
     end
 
+    # locates and returns a project's name based on the project type
     def find_project_name(project_type)
       case project_type
       when :rails_application
@@ -29,13 +31,14 @@ module GitTagger
     # Update version file to match updated tag
     def update_version_file(semantic_version)
       version_text = File.read(@version_file_path)
-      updated_version_contents = version_text
-                                   .gsub(/  VERSION = "[0-9]+\.[0-9]+\.[0-9]+"/,
-                                         "  VERSION = \"#{ semantic_version }\"")
-      File.open(@version_file_path, "w") { |file| file.puts updated_version_contents }
+      version_contents = version_text
+                         .gsub(/  VERSION = "[0-9]+\.[0-9]+\.[0-9]+"/,
+                               "  VERSION = \"#{ semantic_version }\"")
+      File.open(@version_file_path, "w") { |file| file.puts version_contents }
     end
 
     # Locates the version file and returns its path
+    # TODO: Add logic to create version file for project if non-existant.
     def version_file_location(project_type, project_name)
       case project_type
       when :rails_application

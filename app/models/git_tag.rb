@@ -25,7 +25,7 @@ module GitTagger
     end
 
     # Updates the tag semantic version based on the given update type
-    def update update_type
+    def update(update_type)
       major = @semantic_version.split(".")[0].to_i
       minor = @semantic_version.split(".")[1].to_i
       patch = @semantic_version.split(".")[2].to_i
@@ -45,8 +45,8 @@ module GitTagger
     end
 
     def create_and_push
-      # `git tag #{ @semantic_version }`
-      # `git push origin #{ @semantic_version }`
+      `git tag #{ @semantic_version }`
+      `git push origin #{ @semantic_version }`
     end
   end
 end

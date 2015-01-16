@@ -35,13 +35,13 @@ namespace :deploy do
 
     # Abort tagging process if there are uncommitted changes or commits that
     #   have not been pushed to the master branch in the repository.
-    # clean_working_directory_check
+    clean_working_directory_check
 
     # Get the latest tag or create a new tag if no tag exists.
     git_tag = GitTagger::GitTag.new
     project_type = find_project_type_by_gemfile_location
 
-    set_tag_type(git_tag)
+    retrieve_tag_type(git_tag)
     create_changelog(git_tag, project_type)
     update_version(git_tag, project_type)
 
@@ -50,8 +50,7 @@ namespace :deploy do
     puts "#{ WHITE }Tag creation complete! #{ DEFAULT_COLOR }"
   end
 
-
-  def set_tag_type(tag)
+  def retrieve_tag_type(tag)
     puts LINE_BUFFER
     puts "#{ YELLOW } - MAJOR#{ DEFAULT_COLOR } version when you make"\
     " incompatible API changes."
@@ -120,7 +119,8 @@ namespace :deploy do
       changelog_message = STDIN.gets.strip
       puts LINE_BUFFER
 
-      changelog = GitTagger::Changelog.new(tag.semantic_version, changelog_message)
+      changelog = GitTagger::Changelog
+                  .new(tag.semantic_version, changelog_message)
       puts "#{ YELLOW } The following will be prefixed to the CHANGELOG.md " \
       "file #{DEFAULT_COLOR}"
       puts LINE_BUFFER
@@ -132,9 +132,9 @@ namespace :deploy do
         changelog.update(project_type)
         if confirm "push the changelog update to the repository? (#{WHITE}y" \
         "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
-          # `git add "#{original_changelog}"`
-          # `git commit -m "Updating changelog for latest tag."`
-          # `git push`
+          `git add "#{original_changelog}"`
+          `git commit -m "Updating changelog for latest tag."`
+          `git push`
         else
           puts "skipping changelog update"
         end
@@ -185,6 +185,8 @@ namespace :deploy do
     version.update_version_file(tag.semantic_version)
   end
 
+  # disabling cop, unable to break up system commands
+  # rubocop:disable Metrics/LineLength, Style/StringLiterals
   def clean_working_directory_check
     commit_count_check = `git status`
     if !(commit_count_check.include? "Your branch is up-to-date with 'origin/master'.") &&
@@ -193,4 +195,5 @@ namespace :deploy do
       "mpting to create a new tag")
     end
   end
+  # rubocop:enable Metrics/LineLength, Style/StringLiterals
 end

@@ -1,14 +1,16 @@
 module GitTagger
+  # Represents a changelog for a project.
   class Changelog
-
     attr_reader :changelog_path
     attr_reader :update_text
 
+    # Sets the updated changelog text based on a semantic version and message
     def initialize(version, message)
       @update_text = "## #{ version } - " \
       "#{ DateTime.now.strftime('%F') }\n * #{ message }\n\n"
     end
 
+    # Updated the changelog file with the new update text
     def update(project_type)
       original_changelog = locate_changelog project_type
       new_changelog = "#{ original_changelog }.new"
@@ -24,6 +26,7 @@ module GitTagger
 
     private
 
+    # locates and returns a changelog filepath based on project type
     def locate_changelog(project_type)
       case project_type
       when :rails_application
