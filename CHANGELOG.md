@@ -1,3 +1,6 @@
+## 1.0.6 - 2015-01-16
+ * fixed another issue with Gemfile.lock pushing in engines
+
 ## 1.0.5 - 2015-01-16
  * fixed issue with gemfile.lock commit on Rails engine tag updates
 
