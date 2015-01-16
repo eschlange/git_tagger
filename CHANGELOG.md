@@ -1,3 +1,6 @@
+## 1.0.0 - 2015-01-16
+ * Version update 1, major overhaul of code style and organization, added version file update functionality
+
 ## 0.1.1 - 2015-01-14
  * changelog update is now pushed mid-process, process now checks that all local changes are committed and pushed before continuing the tagging process
 
