@@ -1,3 +1,6 @@
+## 1.0.3 - 2015-01-16
+ * fixed readme styles, fixed bug with version updates of full Rails applications
+
 ## 1.0.2 - 2015-01-16
  * minor style update to output information
 
