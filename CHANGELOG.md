@@ -1,3 +1,6 @@
+## 1.0.5 - 2015-01-16
+ * fixed issue with gemfile.lock commit on Rails engine tag updates
+
 ## 1.0.4 - 2015-01-16
  * fixed Rails app version pathing issue
 
