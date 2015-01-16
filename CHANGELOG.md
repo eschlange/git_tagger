@@ -1,3 +1,6 @@
+## 1.0.7 - 2015-01-16
+ * last update for engines
+
 ## 1.0.6 - 2015-01-16
  * fixed another issue with Gemfile.lock pushing in engines
 
