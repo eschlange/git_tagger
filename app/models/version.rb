@@ -45,7 +45,7 @@ module GitTagger
     def version_file_location(project_type, project_name)
       case project_type
       when :rails_application
-        File.expand_path(Rails.root.join "/lib/" \
+        File.expand_path(Rails.root.join "lib/" \
                        "#{ project_name }.rb")
       when :rails_gem
         File.expand_path(Rails.root.join "../../lib/" \
