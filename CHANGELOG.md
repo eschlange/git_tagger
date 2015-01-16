@@ -1,3 +1,6 @@
+## 1.0.2 - 2015-01-16
+ * minor style update to output information
+
 ## 1.0.1 - 2015-01-16
  * bug fix in pushing updated version files, increased accuracy and modified styles in readme
 
