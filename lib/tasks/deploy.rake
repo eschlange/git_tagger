@@ -46,7 +46,7 @@ namespace :deploy do
     print DIVIDER_PURPLE
 
     puts DIVIDER_PURPLE
-    puts "#{ WHITE } Final step: pushing the new tag ..."
+    puts "#{ WHITE } Final step: pushing the new tag ...#{ DEFAULT_COLOR }"
     git_tag.create_and_push
     puts "#{ WHITE } *** Tag creation complete! *** #{ DEFAULT_COLOR }"
     print DIVIDER_PURPLE
