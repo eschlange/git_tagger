@@ -19,11 +19,11 @@ Add the following code to the project's Rakefile:
 
 And then execute:
 
-    $ bundle
+    `$ bundle`
 
 Or install it yourself as:
 
-    $ gem install git_tagger
+    `$ gem install git_tagger`
 
 ## Usage
 
@@ -31,11 +31,11 @@ Within the root directory of your application
 
 - For full Rails applications:
 
-    $ rake deploy:tag
+    `$ rake deploy:tag`
 
-- For Ruby gems:
+- For Ruby Gems:
 
-    $ bundle exec
+    `$ bundle exec rake deploy:tag`
 
 ## Contributing
 

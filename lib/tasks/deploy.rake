@@ -39,9 +39,17 @@ namespace :deploy do
     create_changelog(git_tag, project_type)
     update_version(git_tag, project_type)
 
-    puts "Creating and pushing new tag ..."
+    print DIVIDER_PURPLE
+    puts "#{ WHITE } Pushing updates to changelog and version files (if applicable) ... #{DEFAULT_COLOR}"
+    `git push`
+    puts "#{ WHITE } Changelog and version push was successful!#{DEFAULT_COLOR}"
+    print DIVIDER_PURPLE
+
+    puts DIVIDER_PURPLE
+    puts "#{ WHITE } Final step: pushing the new tag ..."
     git_tag.create_and_push
-    puts "#{ WHITE }Tag creation complete! #{ DEFAULT_COLOR }"
+    puts "#{ WHITE } *** Tag creation complete! *** #{ DEFAULT_COLOR }"
+    print DIVIDER_PURPLE
   end
 
   def retrieve_tag_type(tag)
@@ -173,8 +181,16 @@ namespace :deploy do
   end
 
   def update_version(tag, project_type)
-    version = GitTagger::Version.new(project_type)
-    version.update_version_file(tag.semantic_version)
+
+    print DIVIDER_PURPLE
+    if confirm "#{ YELLOW } Would you like to update the project " \
+      "version? (#{WHITE}y" \
+      "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
+      version = GitTagger::Version.new(project_type)
+      version.update_version_file(tag.semantic_version)
+      puts "version file update complete!"
+    end
+
   end
 
   # disabling cop, unable to break up system commands

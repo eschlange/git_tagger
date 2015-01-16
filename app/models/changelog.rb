@@ -27,7 +27,6 @@ module GitTagger
     def push
       `git add "#{ @changelog_path }"`
       `git commit -m "Updating changelog for latest tag."`
-      `git push`
     end
 
     private

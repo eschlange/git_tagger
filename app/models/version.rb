@@ -35,6 +35,9 @@ module GitTagger
                          .gsub(/  VERSION = "[0-9]+\.[0-9]+\.[0-9]+"/,
                                "  VERSION = \"#{ semantic_version }\"")
       File.open(@version_file_path, "w") { |file| file.puts version_contents }
+
+      `git add "#{ @version_file_path }"`
+      `git commit -m "Updating changelog for latest tag."`
     end
 
     # Locates the version file and returns its path
