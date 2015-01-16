@@ -1,3 +1,6 @@
+## 1.0.4 - 2015-01-16
+ * fixed Rails app version pathing issue
+
 ## 1.0.3 - 2015-01-16
  * fixed readme styles, fixed bug with version updates of full Rails applications
 
