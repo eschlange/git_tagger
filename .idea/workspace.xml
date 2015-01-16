@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3b93132-51de-451d-94f4-9028672498d1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/version.rb" afterPath="$PROJECT_DIR$/app/models/version.rb" />
     </list>
     <ignored path="git_tagger.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61088437" vertical-offset="299" max-vertical-offset="1144">
+            <state vertical-scroll-proportion="-12.472222" vertical-offset="299" max-vertical-offset="1144">
               <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
@@ -83,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="version.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="version.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/version.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.4545455" vertical-offset="546" max-vertical-offset="1496">
-              <caret line="36" column="38" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.5718157" vertical-offset="590" max-vertical-offset="1496">
+              <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -140,9 +139,9 @@
         <option value="$PROJECT_DIR$/lib/git_tagger/version.rb" />
         <option value="$PROJECT_DIR$/app/models/git_tag.rb" />
         <option value="$PROJECT_DIR$/app/models/changelog.rb" />
-        <option value="$PROJECT_DIR$/app/models/version.rb" />
         <option value="$PROJECT_DIR$/lib/tasks/deploy.rake" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/app/models/version.rb" />
       </list>
     </option>
   </component>
@@ -526,14 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/git_tagger/version.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="220">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/git_tag.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49322492" vertical-offset="516" max-vertical-offset="1254">
@@ -546,14 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="220">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/version.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.4545455" vertical-offset="546" max-vertical-offset="1496">
-          <caret line="36" column="38" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -587,13 +570,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61088437" vertical-offset="299" max-vertical-offset="1144">
+        <state vertical-scroll-proportion="-12.472222" vertical-offset="299" max-vertical-offset="1144">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/git_tagger/version.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="220">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/version.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5718157" vertical-offset="590" max-vertical-offset="1496">
+          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
