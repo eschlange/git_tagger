@@ -1,3 +1,6 @@
+## 1.0.1 - 2015-01-16
+ * bug fix in pushing updated version files, increased accuracy and modified styles in readme
+
 ## 1.0.0 - 2015-01-16
  * Version update 1, major overhaul of code style and organization, added version file update functionality
 
