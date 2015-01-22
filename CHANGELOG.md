@@ -1,3 +1,6 @@
+## 1.0.8 - 2015-01-22
+ * fixed version file path issues for rails apps
+
 ## 1.0.7 - 2015-01-16
  * last update for engines
 
