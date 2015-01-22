@@ -53,7 +53,7 @@ module GitTagger
       case project_type
       when :rails_application
         File.expand_path(Rails.root.join "lib/" \
-                       "#{ project_name }.rb")
+                       "#{ project_name }/version.rb")
       when :rails_gem
         File.expand_path(Rails.root.join "../../lib/" \
                        "#{ project_name }/version.rb")
