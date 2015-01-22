@@ -1,3 +1,6 @@
+## 1.0.9 - 2015-01-22
+ * removed unnecessary confirmation from changelog creation, merged git command calls to reduce prompts for creds.
+
 ## 1.0.8 - 2015-01-22
  * fixed version file path issues for rails apps
 
