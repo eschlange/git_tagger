@@ -46,7 +46,7 @@ module GitTagger
 
     def create_and_push
       `git tag #{ @semantic_version }`
-      `git push origin #{ @semantic_version }`
+      `git push && git push origin #{ @semantic_version }`
     end
   end
 end
