@@ -127,12 +127,7 @@ namespace :deploy do
       "this change to origin/master before creating the new tag? (#{WHITE}y" \
       "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
         changelog.update(project_type)
-        if confirm "push the changelog update to the repository? (#{WHITE}y" \
-        "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
-          changelog.push
-        else
-          puts "skipping changelog update"
-        end
+        changelog.commit
       else
         abort("Aborting tagging process.")
       end

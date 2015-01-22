@@ -23,8 +23,8 @@ module GitTagger
       File.rename(new_changelog, @changelog_path)
     end
 
-    # Utilizes system commands to commit and push the changelog to github
-    def push
+    # utilizes system commands to commit the changelog locally
+    def commit
       `git add "#{ @changelog_path }"`
       `git commit -m "Updating changelog for latest tag."`
     end
