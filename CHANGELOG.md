@@ -1,3 +1,6 @@
+## 1.0.11 - 2015-03-05
+ * creates missing files, only requires one push, updated visual output
+
 ## 1.0.10 - 2015-03-05
  * added logic to create CHANGLELOG and version.rb files if they don't initially exist
 
