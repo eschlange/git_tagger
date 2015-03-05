@@ -1,3 +1,6 @@
+## 1.0.12 - 2015-03-05
+ * added semantic version numbers to commit messages
+
 ## 1.0.11 - 2015-03-05
  * creates missing files, only requires one push, updated visual output
 
