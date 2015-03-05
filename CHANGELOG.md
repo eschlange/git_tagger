@@ -1,3 +1,6 @@
+## 1.0.10 - 2015-03-05
+ * added logic to create CHANGLELOG and version.rb files if they don't initially exist
+
 ## 1.0.9 - 2015-01-22
  * removed unnecessary confirmation from changelog creation, merged git command calls to reduce prompts for creds.
 
