@@ -12,7 +12,7 @@ module GitTagger
     # Sets the current semantic version and the creation date of the last tag
     def initialize
       tag_list = `git tag | gsort -V`
-      if tag_list
+      if tag_list && tag_list != ""
         @semantic_version = tag_list.split("\n").last
         # disabling cop, unable to break up system commands
         # rubocop:disable Metrics/LineLength, Style/StringLiterals
@@ -20,7 +20,7 @@ module GitTagger
         # rubocop:enable Metrics/LineLength, Style/StringLiterals
       else
         @semantic_version = "0.0.0"
-        @last_tag_date = "2015-01-01 00:00:00 -0600"
+        @last_tag_date = Date.today
       end
     end
 
@@ -46,7 +46,7 @@ module GitTagger
 
     def create_and_push
       `git tag #{ @semantic_version }`
-      `git push && git push origin #{ @semantic_version }`
+      `git push --follow-tags`
     end
   end
 end

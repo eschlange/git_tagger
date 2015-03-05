@@ -29,7 +29,8 @@ namespace :deploy do
 
     # Abort tagging process if there are uncommitted changes or commits that
     #   have not been pushed to the master branch in the repository.
-    clean_working_directory_check
+    # TODO: remove following line before pushing!
+    # clean_working_directory_check
 
     # Get the latest tag or create a new tag if no tag exists.
     git_tag = GitTagger::GitTag.new
@@ -171,8 +172,6 @@ namespace :deploy do
   end
 
   def update_version(tag, project_type)
-
-    print DIVIDER_PURPLE
     if confirm "#{ YELLOW } Would you like to update the project " \
       "version? (#{WHITE}y" \
       "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "

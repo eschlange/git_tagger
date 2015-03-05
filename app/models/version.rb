@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module GitTagger
   # Represents a version file within a project.
   class Version
@@ -31,6 +33,8 @@ module GitTagger
 
     # Update version file to match updated tag
     def update_version_file(semantic_version)
+      create_version_file(@version_file_path)
+
       version_text = File.read(@version_file_path)
       version_contents = version_text
                          .gsub(/  VERSION = "[0-9]+\.[0-9]+\.[0-9]+"/,
@@ -63,6 +67,17 @@ module GitTagger
       else
         puts "FATAL: Unknown project type, unable to update gem version!"
         abort("aborting tagging process")
+      end
+    end
+
+    def create_version_file(path)
+      if !File.exist?(path)
+        dirname = File.dirname(path)
+        unless File.directory?(dirname)
+          FileUtils.mkdir_p(dirname)
+        end
+        File.open(path, "w") {}
+        `git add "#{ path }"`
       end
     end
   end

@@ -14,12 +14,17 @@ module GitTagger
       @changelog_path = locate_changelog project_type
       new_changelog = "#{ @changelog_path }.new"
 
+      if !File.exist?(@changelog_path)
+        File.open(@changelog_path, "w") {}
+      end
+
       File.open(new_changelog, "w") do |fo|
         fo.puts @update_text
         File.foreach(@changelog_path) do |li|
           fo.puts li
         end
       end
+
       File.rename(new_changelog, @changelog_path)
     end
 
