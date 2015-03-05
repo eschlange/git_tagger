@@ -48,7 +48,7 @@ module GitTagger
         `git add "#{ File.expand_path(Rails.root.join("../../Gemfile.lock")) }"`
       end
 
-      `git commit -m "Updating version for latest tag."`
+      `git commit -m "Updating version for latest tag (#{semantic_version})."`
     end
 
     # Locates the version file and returns its path

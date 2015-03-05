@@ -29,9 +29,9 @@ module GitTagger
     end
 
     # utilizes system commands to commit the changelog locally
-    def commit
+    def commit(version)
       `git add "#{ @changelog_path }"`
-      `git commit -m "Updating changelog for latest tag."`
+      `git commit -m "Updating changelog for latest tag (#{version})."`
     end
 
     private

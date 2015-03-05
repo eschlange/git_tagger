@@ -128,7 +128,7 @@ namespace :deploy do
       "this change to origin/master before creating the new tag? (#{WHITE}y" \
       "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
         changelog.update(project_type)
-        changelog.commit
+        changelog.commit(tag.semantic_version)
       else
         abort("Aborting tagging process.")
       end
