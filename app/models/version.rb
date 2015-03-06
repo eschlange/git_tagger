@@ -52,7 +52,6 @@ module GitTagger
     end
 
     # Locates the version file and returns its path
-    # TODO: Add logic to create version file for project if non-existant.
     def version_file_location(project_type, project_name)
       case project_type
       when :rails_application

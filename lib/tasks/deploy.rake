@@ -27,10 +27,7 @@ namespace :deploy do
     "!#{ DEFAULT_COLOR } #{ PURPLE } ***#{ DEFAULT_COLOR }"
     puts DIVIDER_PURPLE
 
-    # Abort tagging process if there are uncommitted changes or commits that
-    #   have not been pushed to the master branch in the repository.
-    # TODO: remove following line before pushing!
-    # clean_working_directory_check
+    clean_working_directory_check
 
     # Get the latest tag or create a new tag if no tag exists.
     git_tag = GitTagger::GitTag.new
@@ -182,6 +179,8 @@ namespace :deploy do
 
   end
 
+  # Abort tagging process if there are uncommitted changes or commits that
+  #   have not been pushed to the master branch in the repository.
   # disabling cop, unable to break up system commands
   # rubocop:disable Metrics/LineLength, Style/StringLiterals
   def clean_working_directory_check
