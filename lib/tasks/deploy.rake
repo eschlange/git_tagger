@@ -95,40 +95,36 @@ namespace :deploy do
 
   # Create a changelog entry, update version file and commit to master
   def create_changelog(tag, project_type)
-    if confirm " Would you like to create and commit a changelog message " \
-    "related to your new tag? (y/n) "
-      puts LINE_BUFFER
-      puts " The following commits were made since the last tag was created"
-      puts DIVIDER_BLUE
+    puts " The following commits were made since the last tag was created"
+    puts DIVIDER_BLUE
 
-      # disabling cop, unable to break up system commands
-      # rubocop:disable Metrics/LineLength, Style/StringLiterals
-      print `git log --since="#{ tag.last_tag_date }" --pretty=format:'%Cblue %ci %Creset-%Cred %an%Creset - %s'`
-      # rubocop:enable Metrics/LineLength, Style/StringLiterals
+    # disabling cop, unable to break up system commands
+    # rubocop:disable Metrics/LineLength, Style/StringLiterals
+    print `git log --since="#{ tag.last_tag_date }" --pretty=format:'%Cblue %ci %Creset-%Cred %an%Creset - %s'`
+    # rubocop:enable Metrics/LineLength, Style/StringLiterals
 
-      puts DIVIDER_BLUE
-      puts " #{ YELLOW }Enter a brief changelog message to describe the " \
-      "updates since the last tag was created, then press [#{WHITE}ENTER" \
-      "#{YELLOW}]#{DEFAULT_COLOR}"
-      print "  * "
-      changelog_message = STDIN.gets.strip
-      puts LINE_BUFFER
+    puts DIVIDER_BLUE
+    puts " #{ YELLOW }Enter a brief changelog message to describe the " \
+    "updates since the last tag was created, then press [#{WHITE}ENTER" \
+    "#{YELLOW}]#{DEFAULT_COLOR}"
+    print "  * "
+    changelog_message = STDIN.gets.strip
+    puts LINE_BUFFER
 
-      changelog = GitTagger::Changelog
-                  .new(tag.semantic_version, changelog_message)
-      puts "#{ YELLOW } The following will be prefixed to the CHANGELOG.md " \
-      "file #{DEFAULT_COLOR}"
-      puts LINE_BUFFER
-      puts changelog.update_text
+    changelog = GitTagger::Changelog
+                .new(tag.semantic_version, changelog_message)
+    puts "#{ YELLOW } The following will be prefixed to the CHANGELOG.md " \
+    "file #{DEFAULT_COLOR}"
+    puts LINE_BUFFER
+    puts changelog.update_text
 
-      if confirm "#{ YELLOW } Are you sure that you would like to commit " \
-      "this change to origin/master before creating the new tag? (#{WHITE}y" \
-      "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
-        changelog.update(project_type)
-        changelog.add_to_git
-      else
-        abort("Aborting tagging process.")
-      end
+    if confirm "#{ YELLOW } Are you sure that you would like to commit " \
+    "this change to origin/master before creating the new tag? (#{WHITE}y" \
+    "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
+      changelog.update(project_type)
+      changelog.add_to_git
+    else
+      abort("Aborting tagging process.")
     end
   end
 
