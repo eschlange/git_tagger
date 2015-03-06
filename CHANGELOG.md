@@ -1,3 +1,6 @@
+## 1.1.1 - 2015-03-06
+ * modding tag push
+
 ## 1.1.0 - 2015-03-06
  * attempting fix for tag pushing problem
 
