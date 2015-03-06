@@ -45,7 +45,7 @@ module GitTagger
     end
 
     def create_and_push
-      `git commit -m "Tag new release. (@semantic_version)\n* Updating changelog for latest tag.\n* Updating version to match latest tag."`
+      `git commit -m "Tag new release. (#{@semantic_version})\n* Updating changelog for latest tag.\n* Updating version to match latest tag."`
       `git push`
       `git tag #{ @semantic_version }`
       `git push --tags --follow-tags`
