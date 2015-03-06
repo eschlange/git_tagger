@@ -1,3 +1,6 @@
+## 1.1.2 - 2015-03-06
+ * same as before
+
 ## 1.1.1 - 2015-03-06
  * modding tag push
 
