@@ -171,8 +171,6 @@ namespace :deploy do
   def update_version(tag, project_type)
       version = GitTagger::Version.new(project_type)
       version.update_version_file(tag.semantic_version)
-    end
-
   end
 
   # Abort tagging process if there are uncommitted changes or commits that
