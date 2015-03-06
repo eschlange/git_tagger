@@ -1,3 +1,6 @@
+## 1.1.0 - 2015-03-06
+ * attempting fix for tag pushing problem
+
 ## 1.0.12 - 2015-03-05
  * added semantic version numbers to commit messages
 
