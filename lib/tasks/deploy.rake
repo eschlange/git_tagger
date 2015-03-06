@@ -169,12 +169,8 @@ namespace :deploy do
   end
 
   def update_version(tag, project_type)
-    if confirm "#{ YELLOW } Would you like to update the project " \
-      "version? (#{WHITE}y" \
-      "#{YELLOW}/#{WHITE}n#{YELLOW})#{DEFAULT_COLOR} "
       version = GitTagger::Version.new(project_type)
       version.update_version_file(tag.semantic_version)
-      puts "version file update complete!"
     end
 
   end
