@@ -1,3 +1,6 @@
+## 1.1.4 - 2015-03-06
+ * merged commit messages
+
 ## 1.1.3 - 2015-03-06
  * fixed various syntax issues.
 
