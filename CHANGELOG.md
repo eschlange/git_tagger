@@ -1,3 +1,6 @@
+## 1.1.3 - 2015-03-06
+ * fixed various syntax issues.
+
 ## 1.1.2 - 2015-03-06
  * same as before
 
