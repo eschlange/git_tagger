@@ -46,7 +46,7 @@ module GitTagger
 
     def create_and_push
       `git tag #{ @semantic_version }`
-      `git push --tags`
+      `git push --tags --follow-tags`
     end
   end
 end
