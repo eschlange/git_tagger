@@ -1,3 +1,6 @@
+## 1.1.5 - 2015-03-06
+ * fixed text issue in commit message
+
 ## 1.1.4 - 2015-03-06
  * merged commit messages
 
