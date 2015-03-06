@@ -1,3 +1,6 @@
+## 1.1.6 - 2015-03-06
+ * removed choice to update changelog, now it is required
+
 ## 1.1.5 - 2015-03-06
  * fixed text issue in commit message
 
