@@ -100,7 +100,7 @@ namespace :deploy do
     commit_summaries_since_last_tag_pretty =
       `git log --since="#{ tag.last_tag_date }" --pretty=format:'%Cblue %ci %Creset-%Cred %an%Creset - %s'`
     commit_summaries_since_last_tag_raw =
-      `git log --since="#{ tag.last_tag_date }" --pretty=format:'* %s'`
+      `git log --since="#{ tag.last_tag_date }" --pretty=format:' * %s'`
     # rubocop:enable Metrics/LineLength, Style/StringLiterals
 
     puts " The following commits were made since the last tag was created"
