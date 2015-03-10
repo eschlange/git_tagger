@@ -1,3 +1,15 @@
+## 1.1.7 - 2015-03-09
+ * Final updates to auto generated changelog messages.
+ * Further updates to auto changelog output.
+ * Added logic to autocreate changelogs based on commit summaries since last tag.
+ * More time manipulation.
+ * More time manipulation.
+ * More of the same.
+ * More of the same.
+ * More of the same.
+ * Updated date math.
+ * Adding a second to the last tag date to remove last tag commit message.
+
 ## 1.1.6 - 2015-03-06
  * removed choice to update changelog, now it is required
 
