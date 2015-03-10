@@ -7,10 +7,10 @@ module GitTagger
     def initialize(version, message, autocreate)
       if autocreate
         @update_text = "## #{ version } - " \
-        "#{ DateTime.now.strftime('%F') }\n #{ message }\n\n"
+        "#{ DateTime.now.strftime('%F') }\n#{ message }\n\n"
       else
         @update_text = "## #{ version } - " \
-        "#{ DateTime.now.strftime('%F') }\n#{ message }\n\n"
+        "#{ DateTime.now.strftime('%F') }\n * #{ message }\n\n"
       end
 
     end
