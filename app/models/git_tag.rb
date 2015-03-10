@@ -1,6 +1,3 @@
-require "rubygems"
-require "active_support"
-
 module GitTagger
   # Tag holds all relevant information used to updated git tags of
   #   semantic versioning 2.0.0 - http://semver.org/
