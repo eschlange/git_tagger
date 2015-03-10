@@ -1,3 +1,6 @@
+## 1.1.8 - 2015-03-10
+ * Updated time logic to be more robust and accurate.
+
 ## 1.1.7 - 2015-03-09
  * Final updates to auto generated changelog messages.
  * Further updates to auto changelog output.
