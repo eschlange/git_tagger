@@ -4,9 +4,15 @@ module GitTagger
     attr_reader :update_text
 
     # Sets the updated changelog text based on a semantic version and message
-    def initialize(version, message)
-      @update_text = "## #{ version } - " \
-      "#{ DateTime.now.strftime('%F') }\n * #{ message }\n\n"
+    def initialize(version, message, autocreate)
+      if autocreate
+        @update_text = "## #{ version } - " \
+        "#{ DateTime.now.strftime('%F') }\n #{ message }\n\n"
+      else
+        @update_text = "## #{ version } - " \
+        "#{ DateTime.now.strftime('%F') }\n * #{ message }\n\n"
+      end
+
     end
 
     # Updated the changelog file with the new update text
