@@ -17,7 +17,7 @@ module GitTagger
         # disabling cop, unable to break up system commands
         # rubocop:disable Metrics/LineLength, Style/StringLiterals
         @last_tag_date = `git log --tags --simplify-by-decoration --pretty="format:%ai" -n 1`
-        @last_tag_date += 1.second
+        @last_tag_date = DateTime.parse(@last_tag_date) + 1.second
         # rubocop:enable Metrics/LineLength, Style/StringLiterals
       else
         @semantic_version = "0.0.0"
